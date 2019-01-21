@@ -7,6 +7,15 @@
     "type": "git",
     "url": "git+https://github.com/weareunite/unisys-angular-form-group.git"
   },
+  "keywords": [
+    "unite",
+    "unisys",
+    "angular",
+    "angularjs",
+    "framework",
+    "typescript",
+    "javascript"
+  ],
   "peerDependencies": {
     "@angular/common": "^7.2.0",
     "@angular/core": "^7.2.0"
