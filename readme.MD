@@ -7,10 +7,10 @@ Name | Type | Description
 --- | --- | ---
 `translation` | *any* | TBC
 `placeholderTranslation` | *string* | TBC
-`fieldName` | *any* | TBC
-`type` | *string* | TBC
-`rows` | *number* | TBC
-`customClass` | *string* | TBC
+`fieldName` | *any* | Name of the field
+`type` | *string* | Type of form field (input,textarea)
+`rows` | *number* | Number of rows for textarea type
+`customClass` | *string* | Custom class for wrapper div
 #### Component selector
 > lib-unisys-angular-form-group
 
