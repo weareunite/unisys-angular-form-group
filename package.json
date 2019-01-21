@@ -1,6 +1,12 @@
 {
-  "name": "unisys-angular-form-group",
+  "name": "@weareunite/unisys-angular-form-group",
   "version": "0.0.1",
+  "author": "Unite s.r.o.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weareunite/unisys-angular-form-group.git"
+  },
   "peerDependencies": {
     "@angular/common": "^7.2.0",
     "@angular/core": "^7.2.0"

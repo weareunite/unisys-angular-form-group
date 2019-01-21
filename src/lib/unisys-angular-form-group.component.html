@@ -1,0 +1,22 @@
+<div class="form-group" [formGroup]="group" [ngClass]="customClass != '' && customClass">
+  <label class="center-block">
+    <span translate>{{ translation}}</span>
+    <input *ngIf="type == 'input'" class="form-control" [formControlName]="fieldName" [placeholder]="placeholderTranslation | translate">
+    <textarea *ngIf="type == 'textarea'" [rows]="rows" class="form-control" [formControlName]="fieldName" [placeholder]="placeholderTranslation | translate"></textarea>
+  </label>
+  <ul>
+    <li *ngFor="let item of field.errors | keyvalue" class="error">
+      <span class="text-red" translate>{{ item.key}}</span>
+      <span *ngIf="isString(item.value)" translate> {{ item.value}}</span>
+      <span *ngIf="!isString(item.value)">
+          <ul>
+            <li *ngFor="let subitem of item.value | keyvalue" class="error">
+              <span translate>{{ subitem.key}}</span> : {{ subitem.value}}
+            </li>
+          </ul>
+        </span>
+    </li>
+  </ul>
+</div>
+
+
