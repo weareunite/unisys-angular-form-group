@@ -3,5 +3,8 @@
   "dest": "../../dist/unisys-angular-form-group",
   "lib": {
     "entryFile": "src/public_api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "@ngx-translate/http-loader"
+  ]
 }
