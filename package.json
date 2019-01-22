@@ -14,10 +14,7 @@
     "angularjs",
     "framework",
     "typescript",
-    "javascript",
-    "typescript",
-    "tsc",
-    "angular2"
+    "javascript"
   ],
   "peerDependencies": {
     "@angular/common": "^7.2.0",
