@@ -6,7 +6,7 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpClient} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
-export function HttpLoaderFactory(http: HttpClient) {
+export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
@@ -16,13 +16,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    TranslateModule.forRoot({
+    TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
+        useFactory: (createTranslateLoader),
         deps: [HttpClient]
-      }
-    }),
+      },
+      isolate: true
+    })
   ],
   exports: [UnisysAngularFormGroupComponent]
 })

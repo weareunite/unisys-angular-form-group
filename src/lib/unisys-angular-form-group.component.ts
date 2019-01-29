@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'lib-unisys-angular-form-group',
@@ -18,7 +19,11 @@ export class UnisysAngularFormGroupComponent implements OnInit {
 
   public field;
 
-  constructor() {
+  constructor(
+    private readonly translate: TranslateService
+  ) {
+    translate.setDefaultLang('sk');
+    translate.use('sk');
   }
 
   ngOnInit() {
