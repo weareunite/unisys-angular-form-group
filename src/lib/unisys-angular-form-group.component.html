@@ -1,9 +1,9 @@
 <div class="form-group" [formGroup]="group" [ngClass]="customClass != '' && customClass">
   <label class="center-block">
     <span translate>{{ translation}}</span>
-    <input *ngIf="type == 'input'" class="form-control" [formControlName]="fieldName" [placeholder]="placeholderTranslation | translate">
-    <textarea *ngIf="type == 'textarea'" [rows]="rows" class="form-control" [formControlName]="fieldName" [placeholder]="placeholderTranslation | translate"></textarea>
   </label>
+  <input *ngIf="type == 'input'" class="form-control" [formControlName]="fieldName" [placeholder]="placeholderTranslation | translate">
+  <textarea *ngIf="type == 'textarea'" [rows]="rows" class="form-control" [formControlName]="fieldName" [placeholder]="placeholderTranslation | translate"></textarea>
   <ul>
     <li *ngFor="let item of field.errors | keyvalue" class="error">
       <span class="text-red" translate>{{ item.key}}</span>
