@@ -15,6 +15,7 @@ export class UnisysAngularFormGroupComponent implements OnInit {
   @Input('type') type: string = 'input';
   @Input('rows') rows: number = 1;
   @Input('customClass') customClass: string = '';
+  @Input('checked') checked;
   @Input() group: FormGroup;
 
   public field;

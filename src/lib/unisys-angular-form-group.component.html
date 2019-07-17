@@ -3,6 +3,7 @@
     <span translate>{{ translation}}</span>
   </label>
   <input *ngIf="type == 'input'" class="form-control" [formControlName]="fieldName" [placeholder]="placeholderTranslation | translate">
+  <input *ngIf="type == 'checkbox'" [formControlName]="fieldName" [checked]="checked" type="checkbox">
   <textarea *ngIf="type == 'textarea'" [rows]="rows" class="form-control" [formControlName]="fieldName" [placeholder]="placeholderTranslation | translate"></textarea>
   <ul>
     <li *ngFor="let item of field.errors | keyvalue" class="error">
