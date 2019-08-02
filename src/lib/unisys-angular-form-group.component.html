@@ -2,7 +2,12 @@
   <label class="center-block">
     <span translate>{{ translation}}</span>
   </label>
-  <input *ngIf="type == 'input'" class="form-control" [formControlName]="fieldName" [placeholder]="placeholderTranslation | translate">
+  <ng-container *ngIf="type === 'input'">
+    <input *ngIf="type == 'input'" class="form-control" [ngClass]="{'width-auto': appendText}" [formControlName]="fieldName" [placeholder]="placeholderTranslation | translate" [ngStyle]="{width: width}">
+    <div class="append-text" *ngIf="appendText">
+      <div [innerHTML]="appendText"></div>
+    </div>
+  </ng-container>
   <input *ngIf="type == 'checkbox'" [formControlName]="fieldName" [checked]="checked" type="checkbox">
   <textarea *ngIf="type == 'textarea'" [rows]="rows" class="form-control" [formControlName]="fieldName" [placeholder]="placeholderTranslation | translate"></textarea>
   <ul>

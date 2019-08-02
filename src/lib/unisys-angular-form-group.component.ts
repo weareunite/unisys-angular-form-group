@@ -10,12 +10,14 @@ import {TranslateService} from '@ngx-translate/core';
 export class UnisysAngularFormGroupComponent implements OnInit {
 
   @Input('translation') translation;
-  @Input('placeholderTranslation') placeholderTranslation: string = '';
+  @Input('placeholderTranslation') placeholderTranslation = '';
   @Input('fieldName') fieldName;
-  @Input('type') type: string = 'input';
-  @Input('rows') rows: number = 1;
-  @Input('customClass') customClass: string = '';
+  @Input('type') type = 'input';
+  @Input('rows') rows = 1;
+  @Input('customClass') customClass = '';
   @Input('checked') checked;
+  @Input('appendText') appendText;
+  @Input('width') width;
   @Input() group: FormGroup;
 
   public field;
