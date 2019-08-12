@@ -18,6 +18,7 @@ export class UnisysAngularFormGroupComponent implements OnInit {
   @Input('checked') checked;
   @Input('appendText') appendText;
   @Input('width') width;
+  @Input('property') property = false;
   @Input() group: FormGroup;
 
   public field;
