@@ -19,6 +19,7 @@ export class UnisysAngularFormGroupComponent implements OnInit {
   @Input('appendText') appendText;
   @Input('width') width;
   @Input('property') property = false;
+  @Input('readOnly') readonly = false;
   @Input() group: FormGroup;
 
   public field;
