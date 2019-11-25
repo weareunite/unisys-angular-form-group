@@ -2,8 +2,9 @@
   <label class="center-block">
     <span translate>{{ translation}}</span>
   </label>
-  <ng-container *ngIf="type === 'input'">
+  <ng-container *ngIf="type === 'input' || type === 'password'">
     <input *ngIf="type == 'input'" class="form-control" [readOnly]="readonly" [ngClass]="{'width-auto': appendText}" [formControlName]="fieldName" [placeholder]="placeholderTranslation | translate" [ngStyle]="{width: width}">
+    <input *ngIf="type == 'password'" type="password" class="form-control" [readOnly]="readonly" [ngClass]="{'width-auto': appendText}" [formControlName]="fieldName" [placeholder]="placeholderTranslation | translate" [ngStyle]="{width: width}">
     <div class="append-text" *ngIf="appendText">
       <div [innerHTML]="appendText"></div>
     </div>
