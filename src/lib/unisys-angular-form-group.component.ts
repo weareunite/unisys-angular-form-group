@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import { FormGroup, FormGroupName } from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({
@@ -20,6 +20,7 @@ export class UnisysAngularFormGroupComponent implements OnInit {
   @Input('width') width;
   @Input('property') property = false;
   @Input('readOnly') readonly = false;
+  @Input('parent') parent: string = null;
   @Input() group: FormGroup;
 
   public field;
@@ -32,7 +33,11 @@ export class UnisysAngularFormGroupComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.field = this.group.controls[this.fieldName];
+    if (this.parent) {
+      this.field = this.group.get([this.parent, this.fieldName]);
+    } else {
+      this.field = this.group.get(this.fieldName);
+    }
   }
 
   public isString(val) {

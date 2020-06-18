@@ -1,29 +1,52 @@
-<div class="form-group" [formGroup]="group" [ngClass]="customClass != '' && customClass">
-  <label class="center-block">
-    <span translate>{{ translation}}</span>
-  </label>
-  <ng-container *ngIf="type === 'input' || type === 'password'">
-    <input *ngIf="type == 'input'" class="form-control" [readOnly]="readonly" [ngClass]="{'width-auto': appendText}" [formControlName]="fieldName" [placeholder]="placeholderTranslation | translate" [ngStyle]="{width: width}">
-    <input *ngIf="type == 'password'" type="password" class="form-control" [readOnly]="readonly" [ngClass]="{'width-auto': appendText}" [formControlName]="fieldName" [placeholder]="placeholderTranslation | translate" [ngStyle]="{width: width}">
-    <div class="append-text" *ngIf="appendText">
-      <div [innerHTML]="appendText"></div>
+<div class="form-group" [formGroup]="group" [ngClass]="customClass != '' && customClass" *ngIf="field">
+  <ng-container *ngIf="parent"> <!-- TODO DONT USE IT TWICE!!!-->
+    <div [formGroupName]="parent">
+        <label class="center-block">
+          <span translate>{{ translation}}</span>
+        </label>
+        <ng-container *ngIf="type === 'input' || type === 'password' || type === 'number'">
+          <input *ngIf="type == 'input'" class="form-control" [readOnly]="readonly" [ngClass]="{'width-auto': appendText}" [formControlName]="fieldName" [placeholder]="placeholderTranslation | translate" [ngStyle]="{width: width}">
+          <input *ngIf="type == 'number'" type="number" class="form-control" [readOnly]="readonly" [ngClass]="{'width-auto': appendText}" [formControlName]="fieldName" [placeholder]="placeholderTranslation | translate" [ngStyle]="{width: width}">
+          <input *ngIf="type == 'password'" type="password" class="form-control" [readOnly]="readonly" [ngClass]="{'width-auto': appendText}" [formControlName]="fieldName" [placeholder]="placeholderTranslation | translate" [ngStyle]="{width: width}">
+          <div class="append-text" *ngIf="appendText">
+            <div [innerHTML]="appendText"></div>
+          </div>
+        </ng-container>
+        <input *ngIf="type == 'checkbox'" [formControlName]="fieldName" [checked]="checked" type="checkbox">
+        <textarea *ngIf="type == 'textarea'" [rows]="rows" class="form-control" [formControlName]="fieldName" [placeholder]="placeholderTranslation | translate"></textarea>
     </div>
   </ng-container>
-  <input *ngIf="type == 'checkbox'" [formControlName]="fieldName" [checked]="checked" type="checkbox">
-  <textarea *ngIf="type == 'textarea'" [rows]="rows" class="form-control" [formControlName]="fieldName" [placeholder]="placeholderTranslation | translate"></textarea>
-  <ul>
-    <li *ngFor="let item of field.errors | keyvalue" class="error">
-      <span class="text-red" translate>{{ item.key}}</span>
-      <span *ngIf="isString(item.value)" translate> {{ item.value}}</span>
-      <span *ngIf="!isString(item.value)">
-          <ul>
-            <li *ngFor="let subitem of item.value | keyvalue" class="error">
-              <span translate>{{ subitem.key}}</span> : {{ subitem.value}}
-            </li>
-          </ul>
-        </span>
-    </li>
-  </ul>
+  <ng-container *ngIf="!parent">
+      <label class="center-block">
+        <span translate>{{ translation}}</span>
+      </label>
+      <ng-container *ngIf="type === 'input' || type === 'password' || type === 'number'">
+        <input *ngIf="type == 'input'" class="form-control" [readOnly]="readonly" [ngClass]="{'width-auto': appendText}" [formControlName]="fieldName" [placeholder]="placeholderTranslation | translate" [ngStyle]="{width: width}">
+        <input *ngIf="type == 'number'" type="number" class="form-control" [readOnly]="readonly" [ngClass]="{'width-auto': appendText}" [formControlName]="fieldName" [placeholder]="placeholderTranslation | translate" [ngStyle]="{width: width}">
+        <input *ngIf="type == 'password'" type="password" class="form-control" [readOnly]="readonly" [ngClass]="{'width-auto': appendText}" [formControlName]="fieldName" [placeholder]="placeholderTranslation | translate" [ngStyle]="{width: width}">
+        <div class="append-text" *ngIf="appendText">
+          <div [innerHTML]="appendText"></div>
+        </div>
+      </ng-container>
+      <input *ngIf="type == 'checkbox'" [formControlName]="fieldName" [checked]="checked" type="checkbox">
+      <textarea *ngIf="type == 'textarea'" [rows]="rows" class="form-control" [formControlName]="fieldName" [placeholder]="placeholderTranslation | translate"></textarea>
+  </ng-container>
+    <ul>
+      <li *ngFor="let item of field.errors | keyvalue" class="error">
+        <span class="text-red" translate>{{ item.key}}</span>
+        <span *ngIf="isString(item.value)" translate> {{ item.value}}</span>
+        <span *ngIf="!isString(item.value)">
+            <ul>
+              <li *ngFor="let subitem of item.value | keyvalue" class="error">
+                <span translate>{{ subitem.key}}</span> : {{ subitem.value}}
+              </li>
+            </ul>
+          </span>
+      </li>
+    </ul>
 </div>
 
-
+<div *ngIf="!field">
+<span>FORM_FIELD_IS_NOT_DEFINED</span>
+<span>{{ this.parent}}, {{ this.fieldName}}</span>
+</div>
