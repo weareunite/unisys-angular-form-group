@@ -28,8 +28,8 @@ export class UnisysAngularFormGroupComponent implements OnInit {
   constructor(
     private readonly translate: TranslateService
   ) {
-    translate.setDefaultLang('sk');
-    translate.use('sk');
+    // translate.setDefaultLang('sk');
+    // translate.use('sk');
   }
 
   ngOnInit() {
